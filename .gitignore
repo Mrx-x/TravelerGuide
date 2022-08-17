@@ -21,3 +21,4 @@
 # Qt
 
 *.pro.user
+*.ui.autosave
