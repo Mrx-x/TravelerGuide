@@ -1,0 +1,23 @@
+# Compiled object files
+
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled static libraries
+
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+
+*.exe
+*.out
+*.app
+
+# Qt
+
+*.pro.user
