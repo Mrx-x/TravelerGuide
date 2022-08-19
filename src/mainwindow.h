@@ -6,6 +6,8 @@
 #include <QPixmap>
 #include <QtWidgets/QStackedWidget>
 #include <QPushButton>
+#include "database/database.h"
+#include <qdebug.h>
 
 namespace Ui {
 class MainWindow;
@@ -24,7 +26,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
+    MyDatabase* database;
 
 };
 

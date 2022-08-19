@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    database = new MyDatabase();
+    database->connection();
 
 
 }
@@ -14,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete database;
 }
 
 void MainWindow::on_buttonTrips_clicked()
