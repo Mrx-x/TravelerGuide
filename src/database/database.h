@@ -1,24 +1,20 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#ifndef QDEBUG_H
-#define QDEBUG_H
+#include <QDebug>
 
-//#include <qdebug.h>
-
-#include <QtSql/QSqlDatabase>
 #include <QMessageBox>
-
-
-
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
 
 class MyDatabase
 {
 public:
     MyDatabase();
-
+    QSqlDatabase database;
     void connection();
+    //void request_to_create_minimal_records(QSqlDatabase& db);
 };
 
 #endif // DATABASE_H
-#endif // QDEBUG_H

@@ -7,7 +7,8 @@
 #include <QtWidgets/QStackedWidget>
 #include <QPushButton>
 #include "database/database.h"
-#include <qdebug.h>
+#include <QSqlTableModel>
+#include <QObject>
 
 namespace Ui {
 class MainWindow;
@@ -24,10 +25,22 @@ public:
 private slots:
     void on_buttonTrips_clicked();
 
+    void on_pushButtonAdd_clicked();
+
+    void on_pushButtonDelete_clicked();
+
+    void on_tableView_clicked(const QModelIndex &index);
+
+    void on_pushButtonSearch_clicked();
+
+    void on_pushButtonCancel_clicked();
+
 private:
     Ui::MainWindow *ui;
-    MyDatabase* database;
+    //MyDatabase myDatabase;
+    QSqlTableModel* model;
 
+    int row; //Номер выделенной строки
 };
 
 #endif // MAINWINDOW_H
