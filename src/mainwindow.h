@@ -9,6 +9,9 @@
 #include "database/database.h"
 #include <QSqlTableModel>
 #include <QObject>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QStringList>
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +37,12 @@ private slots:
     void on_pushButtonSearch_clicked();
 
     void on_pushButtonCancel_clicked();
+
+    void on_buttonListOfThings_clicked();
+
+    void on_pbAddTreeWidgetItem_clicked();
+
+    void on_pbRemoteWidgetItem_clicked();
 
 private:
     Ui::MainWindow *ui;

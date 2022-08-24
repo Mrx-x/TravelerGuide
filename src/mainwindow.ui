@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1043</width>
-    <height>615</height>
+    <height>629</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,11 +26,11 @@
       <x>40</x>
       <y>70</y>
       <width>961</width>
-      <height>461</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="label">
@@ -58,7 +58,7 @@
       <property name="geometry">
        <rect>
         <x>160</x>
-        <y>380</y>
+        <y>370</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -75,7 +75,7 @@ background-color: rgb(14, 141, 125);</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>380</y>
+        <y>370</y>
         <width>131</width>
         <height>41</height>
        </rect>
@@ -94,7 +94,7 @@ background-color: rgb(14, 141, 125);</string>
         <x>9</x>
         <y>9</y>
         <width>961</width>
-        <height>361</height>
+        <height>351</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -105,9 +105,9 @@ background-color: rgb(14, 141, 125);</string>
       <property name="geometry">
        <rect>
         <x>600</x>
-        <y>370</y>
+        <y>360</y>
         <width>361</width>
-        <height>91</height>
+        <height>111</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -122,12 +122,22 @@ background-color: rgb(14, 141, 125);</string>
          <x>12</x>
          <y>28</y>
          <width>331</width>
-         <height>55</height>
+         <height>71</height>
         </rect>
        </property>
        <layout class="QFormLayout" name="formLayout">
         <item row="0" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QRadioButton" name="radioButtonAll">
+            <property name="text">
+             <string>Везде</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QRadioButton" name="radioButtonCity">
             <property name="styleSheet">
@@ -137,7 +147,7 @@ background-color: rgb(14, 141, 125);</string>
              <string>Город</string>
             </property>
             <property name="checked">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -202,6 +212,60 @@ background-color: rgb(14, 141, 125);</string>
         </item>
        </layout>
       </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_3">
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>951</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <column>
+       <property name="text">
+        <string notr="true">1</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="pbAddTreeWidgetItem">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>410</y>
+        <width>151</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(7, 142, 128);</string>
+      </property>
+      <property name="text">
+       <string>Добавить</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbRemoteWidgetItem">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>410</y>
+        <width>151</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(7, 142, 128);</string>
+      </property>
+      <property name="text">
+       <string>Удалить</string>
+      </property>
      </widget>
     </widget>
    </widget>

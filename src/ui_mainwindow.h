@@ -27,6 +27,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -47,6 +48,7 @@ public:
     QWidget *layoutWidget;
     QFormLayout *formLayout;
     QVBoxLayout *verticalLayout_2;
+    QRadioButton *radioButtonAll;
     QRadioButton *radioButtonCity;
     QRadioButton *radioButtonCountry;
     QVBoxLayout *verticalLayout;
@@ -54,6 +56,10 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButtonSearch;
     QPushButton *pushButtonCancel;
+    QWidget *page_3;
+    QTreeWidget *treeWidget;
+    QPushButton *pbAddTreeWidgetItem;
+    QPushButton *pbRemoteWidgetItem;
     QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QPushButton *buttonTrips;
@@ -67,14 +73,14 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1043, 615);
+        MainWindow->resize(1043, 629);
         MainWindow->setAutoFillBackground(false);
         MainWindow->setStyleSheet(QStringLiteral("background-color: rgb(17, 41, 45);"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         stackedWidget = new QStackedWidget(centralWidget);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
-        stackedWidget->setGeometry(QRect(40, 70, 961, 461));
+        stackedWidget->setGeometry(QRect(40, 70, 961, 481));
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
         label = new QLabel(page);
@@ -87,25 +93,25 @@ public:
         page_2->setObjectName(QStringLiteral("page_2"));
         pushButtonDelete = new QPushButton(page_2);
         pushButtonDelete->setObjectName(QStringLiteral("pushButtonDelete"));
-        pushButtonDelete->setGeometry(QRect(160, 380, 131, 41));
+        pushButtonDelete->setGeometry(QRect(160, 370, 131, 41));
         pushButtonDelete->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
 "background-color: rgb(14, 141, 125);"));
         pushButtonAdd = new QPushButton(page_2);
         pushButtonAdd->setObjectName(QStringLiteral("pushButtonAdd"));
-        pushButtonAdd->setGeometry(QRect(10, 380, 131, 41));
+        pushButtonAdd->setGeometry(QRect(10, 370, 131, 41));
         pushButtonAdd->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
 "background-color: rgb(14, 141, 125);"));
         tableView = new QTableView(page_2);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(9, 9, 961, 361));
+        tableView->setGeometry(QRect(9, 9, 961, 351));
         tableView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         groupBox = new QGroupBox(page_2);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(600, 370, 361, 91));
+        groupBox->setGeometry(QRect(600, 360, 361, 111));
         groupBox->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(12, 28, 331, 55));
+        layoutWidget->setGeometry(QRect(12, 28, 331, 71));
         formLayout = new QFormLayout(layoutWidget);
         formLayout->setSpacing(6);
         formLayout->setContentsMargins(11, 11, 11, 11);
@@ -114,10 +120,16 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        radioButtonAll = new QRadioButton(layoutWidget);
+        radioButtonAll->setObjectName(QStringLiteral("radioButtonAll"));
+        radioButtonAll->setChecked(true);
+
+        verticalLayout_2->addWidget(radioButtonAll);
+
         radioButtonCity = new QRadioButton(layoutWidget);
         radioButtonCity->setObjectName(QStringLiteral("radioButtonCity"));
         radioButtonCity->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
-        radioButtonCity->setChecked(true);
+        radioButtonCity->setChecked(false);
 
         verticalLayout_2->addWidget(radioButtonCity);
 
@@ -169,6 +181,26 @@ public:
         formLayout->setLayout(0, QFormLayout::FieldRole, verticalLayout);
 
         stackedWidget->addWidget(page_2);
+        page_3 = new QWidget();
+        page_3->setObjectName(QStringLiteral("page_3"));
+        treeWidget = new QTreeWidget(page_3);
+        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        __qtreewidgetitem->setText(0, QStringLiteral("1"));
+        treeWidget->setHeaderItem(__qtreewidgetitem);
+        treeWidget->setObjectName(QStringLiteral("treeWidget"));
+        treeWidget->setGeometry(QRect(10, 40, 951, 361));
+        treeWidget->setStyleSheet(QStringLiteral("background-color:rgb(255, 255, 255)"));
+        pbAddTreeWidgetItem = new QPushButton(page_3);
+        pbAddTreeWidgetItem->setObjectName(QStringLiteral("pbAddTreeWidgetItem"));
+        pbAddTreeWidgetItem->setGeometry(QRect(10, 410, 151, 51));
+        pbAddTreeWidgetItem->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+        pbRemoteWidgetItem = new QPushButton(page_3);
+        pbRemoteWidgetItem->setObjectName(QStringLiteral("pbRemoteWidgetItem"));
+        pbRemoteWidgetItem->setGeometry(QRect(170, 410, 151, 51));
+        pbRemoteWidgetItem->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+        stackedWidget->addWidget(page_3);
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(41, 11, 981, 51));
@@ -224,7 +256,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -237,11 +269,14 @@ public:
         pushButtonDelete->setText(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
         pushButtonAdd->setText(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         groupBox->setTitle(QApplication::translate("MainWindow", "\320\237\320\276\320\270\321\201\320\272", nullptr));
+        radioButtonAll->setText(QApplication::translate("MainWindow", "\320\222\320\265\320\267\320\264\320\265", nullptr));
         radioButtonCity->setText(QApplication::translate("MainWindow", "\320\223\320\276\321\200\320\276\320\264", nullptr));
         radioButtonCountry->setText(QApplication::translate("MainWindow", "\320\241\321\202\321\200\320\260\320\275\320\260", nullptr));
         lineEdit->setText(QApplication::translate("MainWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\275\320\260\320\267\320\262\320\260\320\275\320\270\320\265", nullptr));
         pushButtonSearch->setText(QApplication::translate("MainWindow", "\320\235\320\260\320\271\321\202\320\270", nullptr));
         pushButtonCancel->setText(QApplication::translate("MainWindow", "\320\236\321\202\320\274\320\265\320\275\320\260", nullptr));
+        pbAddTreeWidgetItem->setText(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        pbRemoteWidgetItem->setText(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
         buttonTrips->setText(QApplication::translate("MainWindow", "\320\237\320\276\320\265\320\267\320\264\320\272\320\270", nullptr));
         buttonListOfThings->setText(QApplication::translate("MainWindow", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\262\320\265\321\211\320\265\320\271", nullptr));
         buttonTravelerCard->setText(QApplication::translate("MainWindow", "\320\232\320\260\321\200\321\202\320\276\321\207\320\272\320\260 \320\277\321\203\321\202\320\265\321\210\320\265\321\201\321\202\320\262\320\265\320\275\320\275\320\270\320\272\320\260", nullptr));
