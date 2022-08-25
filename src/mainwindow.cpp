@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
 
     MyDatabase* myDatabase = new MyDatabase();
     myDatabase->connection();
@@ -75,10 +76,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//---Переход по страницам
 void MainWindow::on_buttonTrips_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
+
+void MainWindow::on_buttonListOfThings_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_buttonTravelerCard_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+//---
 
 void MainWindow::on_pushButtonAdd_clicked()
 {
@@ -117,11 +130,6 @@ void MainWindow::on_pushButtonCancel_clicked()
     model->setFilter(QString());
 }
 
-void MainWindow::on_buttonListOfThings_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
 void MainWindow::on_pbAddTreeWidgetItem_clicked()
 {
     QTreeWidgetItem* newItem = new QTreeWidgetItem(ui->treeWidget->currentItem());
@@ -133,4 +141,25 @@ void MainWindow::on_pbRemoteWidgetItem_clicked()
 {
     delete ui->treeWidget->currentItem();
 
+}
+
+void MainWindow::on_pbAddPhoto_clicked()
+{
+    QString path = QFileDialog::getOpenFileName(this, "Open file", "./", tr("Images (*.png *.jpg *.xmp)"));
+    QPixmap photo(path);
+    ui->profileLogo->setPixmap(photo);
+}
+
+void MainWindow::on_pbAddPassport_clicked()
+{
+    pathPassport = QFileDialog::getOpenFileName(this, "Open file", "./", tr("Images (*.png *.jpg *.xmp)"));
+}
+
+void MainWindow::on_pbViewPassport_clicked()
+{
+    QLabel* lViewPassport = new QLabel();
+    lViewPassport->resize(800, 800);
+    lViewPassport->setAlignment(Qt::AlignCenter);
+    lViewPassport->setPixmap(QPixmap(pathPassport));
+    lViewPassport->show();
 }

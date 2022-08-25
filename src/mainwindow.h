@@ -12,6 +12,8 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QStringList>
+#include <QFileDialog>
+#include <QSize>
 
 namespace Ui {
 class MainWindow;
@@ -44,12 +46,21 @@ private slots:
 
     void on_pbRemoteWidgetItem_clicked();
 
+    void on_pbAddPhoto_clicked();
+
+    void on_buttonTravelerCard_clicked();
+
+    void on_pbViewPassport_clicked();
+
+    void on_pbAddPassport_clicked();
+
 private:
     Ui::MainWindow *ui;
     //MyDatabase myDatabase;
     QSqlTableModel* model;
 
     int row; //Номер выделенной строки
+    QString pathPassport;
 };
 
 #endif // MAINWINDOW_H

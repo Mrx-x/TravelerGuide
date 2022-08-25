@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -60,7 +61,24 @@ public:
     QTreeWidget *treeWidget;
     QPushButton *pbAddTreeWidgetItem;
     QPushButton *pbRemoteWidgetItem;
+    QWidget *page_4;
+    QLabel *lAboutMe;
+    QLineEdit *leAboutMe;
+    QLineEdit *leNotes;
+    QLabel *lNotes;
+    QLabel *lReferences;
+    QLineEdit *leReferences;
+    QGroupBox *groupBox_2;
+    QGridLayout *gridLayout;
+    QPushButton *pbAddPassport;
+    QPushButton *pbAddTicket;
+    QPushButton *pbViewPassport;
+    QPushButton *pbViewTicket;
     QWidget *layoutWidget1;
+    QVBoxLayout *verticalLayout_3;
+    QLabel *profileLogo;
+    QPushButton *pbAddPhoto;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout;
     QPushButton *buttonTrips;
     QPushButton *buttonListOfThings;
@@ -111,7 +129,7 @@ public:
         groupBox->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(12, 28, 331, 71));
+        layoutWidget->setGeometry(QRect(12, 28, 331, 73));
         formLayout = new QFormLayout(layoutWidget);
         formLayout->setSpacing(6);
         formLayout->setContentsMargins(11, 11, 11, 11);
@@ -201,16 +219,147 @@ public:
         pbRemoteWidgetItem->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
 "background-color: rgb(7, 142, 128);"));
         stackedWidget->addWidget(page_3);
-        layoutWidget1 = new QWidget(centralWidget);
+        page_4 = new QWidget();
+        page_4->setObjectName(QStringLiteral("page_4"));
+        lAboutMe = new QLabel(page_4);
+        lAboutMe->setObjectName(QStringLiteral("lAboutMe"));
+        lAboutMe->setGeometry(QRect(170, 10, 71, 21));
+        QFont font;
+        font.setFamily(QStringLiteral("Times New Roman"));
+        font.setPointSize(11);
+        font.setBold(true);
+        font.setItalic(false);
+        font.setWeight(75);
+        lAboutMe->setFont(font);
+        lAboutMe->setStyleSheet(QLatin1String("color: white;\n"
+"border-style: solid;\n"
+" border-width: 1px; \n"
+"border-color: rgb(7, 142, 128);"));
+        lAboutMe->setAlignment(Qt::AlignCenter);
+        leAboutMe = new QLineEdit(page_4);
+        leAboutMe->setObjectName(QStringLiteral("leAboutMe"));
+        leAboutMe->setGeometry(QRect(170, 30, 741, 81));
+        QFont font1;
+        font1.setPointSize(9);
+        leAboutMe->setFont(font1);
+        leAboutMe->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
+"\n"
+"border-style: solid;\n"
+" border-width: 3px; \n"
+"border-color: rgb(7, 142, 128);"));
+        leAboutMe->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        leNotes = new QLineEdit(page_4);
+        leNotes->setObjectName(QStringLiteral("leNotes"));
+        leNotes->setGeometry(QRect(170, 150, 311, 61));
+        leNotes->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
+"\n"
+"border-style: solid;\n"
+" border-width: 3px; \n"
+"border-color: rgb(7, 142, 128);"));
+        lNotes = new QLabel(page_4);
+        lNotes->setObjectName(QStringLiteral("lNotes"));
+        lNotes->setGeometry(QRect(170, 130, 81, 21));
+        QFont font2;
+        font2.setFamily(QStringLiteral("Times New Roman"));
+        font2.setPointSize(11);
+        font2.setBold(true);
+        font2.setWeight(75);
+        lNotes->setFont(font2);
+        lNotes->setStyleSheet(QLatin1String("color: white;\n"
+"border-style: solid;\n"
+" border-width: 1px; \n"
+"border-color: rgb(7, 142, 128);"));
+        lNotes->setAlignment(Qt::AlignCenter);
+        lReferences = new QLabel(page_4);
+        lReferences->setObjectName(QStringLiteral("lReferences"));
+        lReferences->setGeometry(QRect(530, 130, 81, 21));
+        lReferences->setFont(font2);
+        lReferences->setStyleSheet(QLatin1String("color: white;\n"
+"border-style: solid;\n"
+" border-width: 1px; \n"
+"border-color: rgb(7, 142, 128);"));
+        lReferences->setAlignment(Qt::AlignCenter);
+        leReferences = new QLineEdit(page_4);
+        leReferences->setObjectName(QStringLiteral("leReferences"));
+        leReferences->setGeometry(QRect(530, 150, 381, 61));
+        leReferences->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
+"\n"
+"border-style: solid;\n"
+" border-width: 3px; \n"
+"border-color: rgb(7, 142, 128);"));
+        groupBox_2 = new QGroupBox(page_4);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(0, 230, 311, 111));
+        gridLayout = new QGridLayout(groupBox_2);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        pbAddPassport = new QPushButton(groupBox_2);
+        pbAddPassport->setObjectName(QStringLiteral("pbAddPassport"));
+        pbAddPassport->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+
+        gridLayout->addWidget(pbAddPassport, 0, 0, 1, 1);
+
+        pbAddTicket = new QPushButton(groupBox_2);
+        pbAddTicket->setObjectName(QStringLiteral("pbAddTicket"));
+        pbAddTicket->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);\n"
+"\n"
+""));
+
+        gridLayout->addWidget(pbAddTicket, 0, 1, 1, 1);
+
+        pbViewPassport = new QPushButton(groupBox_2);
+        pbViewPassport->setObjectName(QStringLiteral("pbViewPassport"));
+        pbViewPassport->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+
+        gridLayout->addWidget(pbViewPassport, 1, 0, 1, 1);
+
+        pbViewTicket = new QPushButton(groupBox_2);
+        pbViewTicket->setObjectName(QStringLiteral("pbViewTicket"));
+        pbViewTicket->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+
+        gridLayout->addWidget(pbViewTicket, 1, 1, 1, 1);
+
+        layoutWidget1 = new QWidget(page_4);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(41, 11, 981, 51));
-        horizontalLayout = new QHBoxLayout(layoutWidget1);
+        layoutWidget1->setGeometry(QRect(0, 10, 161, 201));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget1);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        profileLogo = new QLabel(layoutWidget1);
+        profileLogo->setObjectName(QStringLiteral("profileLogo"));
+        profileLogo->setPixmap(QPixmap(QString::fromUtf8("../user.png")));
+        profileLogo->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_3->addWidget(profileLogo);
+
+        pbAddPhoto = new QPushButton(layoutWidget1);
+        pbAddPhoto->setObjectName(QStringLiteral("pbAddPhoto"));
+        pbAddPhoto->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+
+        verticalLayout_3->addWidget(pbAddPhoto);
+
+        stackedWidget->addWidget(page_4);
+        layoutWidget2 = new QWidget(centralWidget);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(41, 11, 981, 51));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
         horizontalLayout->setSpacing(10);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         horizontalLayout->setContentsMargins(5, 0, 5, 0);
-        buttonTrips = new QPushButton(layoutWidget1);
+        buttonTrips = new QPushButton(layoutWidget2);
         buttonTrips->setObjectName(QStringLiteral("buttonTrips"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
@@ -222,7 +371,7 @@ public:
 
         horizontalLayout->addWidget(buttonTrips);
 
-        buttonListOfThings = new QPushButton(layoutWidget1);
+        buttonListOfThings = new QPushButton(layoutWidget2);
         buttonListOfThings->setObjectName(QStringLiteral("buttonListOfThings"));
         sizePolicy1.setHeightForWidth(buttonListOfThings->sizePolicy().hasHeightForWidth());
         buttonListOfThings->setSizePolicy(sizePolicy1);
@@ -231,7 +380,7 @@ public:
 
         horizontalLayout->addWidget(buttonListOfThings);
 
-        buttonTravelerCard = new QPushButton(layoutWidget1);
+        buttonTravelerCard = new QPushButton(layoutWidget2);
         buttonTravelerCard->setObjectName(QStringLiteral("buttonTravelerCard"));
         sizePolicy1.setHeightForWidth(buttonTravelerCard->sizePolicy().hasHeightForWidth());
         buttonTravelerCard->setSizePolicy(sizePolicy1);
@@ -256,7 +405,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -277,6 +426,16 @@ public:
         pushButtonCancel->setText(QApplication::translate("MainWindow", "\320\236\321\202\320\274\320\265\320\275\320\260", nullptr));
         pbAddTreeWidgetItem->setText(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         pbRemoteWidgetItem->setText(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
+        lAboutMe->setText(QApplication::translate("MainWindow", "\320\236 \321\201\320\265\320\261\320\265", nullptr));
+        lNotes->setText(QApplication::translate("MainWindow", "\320\227\320\260\320\274\320\265\321\202\320\272\320\270", nullptr));
+        lReferences->setText(QApplication::translate("MainWindow", "\320\241\321\201\321\213\320\273\320\272\320\270", nullptr));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\272\320\260 \321\204\320\260\320\271\320\273\320\276\320\262", nullptr));
+        pbAddPassport->setText(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\204\320\276\321\202\320\276 \320\277\320\260\321\201\320\277\320\276\321\200\321\202\320\260", nullptr));
+        pbAddTicket->setText(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\204\320\276\321\202\320\276 \320\261\320\270\320\273\320\265\321\202\320\260", nullptr));
+        pbViewPassport->setText(QApplication::translate("MainWindow", "\320\237\320\276\321\201\320\274\320\276\321\202\321\200\320\265\321\202\321\214", nullptr));
+        pbViewTicket->setText(QApplication::translate("MainWindow", "\320\237\320\276\321\201\320\274\320\276\321\202\321\200\320\265\321\202\321\214", nullptr));
+        profileLogo->setText(QString());
+        pbAddPhoto->setText(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\204\320\276\321\202\320\276", nullptr));
         buttonTrips->setText(QApplication::translate("MainWindow", "\320\237\320\276\320\265\320\267\320\264\320\272\320\270", nullptr));
         buttonListOfThings->setText(QApplication::translate("MainWindow", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\262\320\265\321\211\320\265\320\271", nullptr));
         buttonTravelerCard->setText(QApplication::translate("MainWindow", "\320\232\320\260\321\200\321\202\320\276\321\207\320\272\320\260 \320\277\321\203\321\202\320\265\321\210\320\265\321\201\321\202\320\262\320\265\320\275\320\275\320\270\320\272\320\260", nullptr));
