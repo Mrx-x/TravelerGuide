@@ -1,9 +1,0 @@
-<!DOCTYPE Profile>
-<Profile>
- <Photo Path="C:/Users/monst/Desktop/Desktop/Work/3-course/ChMV/CourseWork/TravelerGuide/man.png"/>
- <AboutMe Text="about me"/>
- <Notes Text="notes"/>
- <References Text="references"/>
- <Passport Path="C:/Users/monst/Desktop/Desktop/Work/3-course/ChMV/CourseWork/TravelerGuide/passport.jpg"/>
- <Ticket Path="C:/Users/monst/Desktop/Desktop/Work/3-course/ChMV/CourseWork/TravelerGuide/ticket.jpg"/>
-</Profile>
