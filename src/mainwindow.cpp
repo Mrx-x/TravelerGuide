@@ -145,8 +145,8 @@ void MainWindow::on_pbRemoteWidgetItem_clicked()
 
 void MainWindow::on_pbAddPhoto_clicked()
 {
-    QString path = QFileDialog::getOpenFileName(this, "Open file", "./", tr("Images (*.png *.jpg *.xmp)"));
-    QPixmap photo(path);
+    pathPhoto = QFileDialog::getOpenFileName(this, "Open file", "./", tr("Images (*.png *.jpg *.xmp)"));
+    QPixmap photo(pathPhoto);
     ui->profileLogo->setPixmap(photo);
 }
 
@@ -162,4 +162,122 @@ void MainWindow::on_pbViewPassport_clicked()
     lViewPassport->setAlignment(Qt::AlignCenter);
     lViewPassport->setPixmap(QPixmap(pathPassport));
     lViewPassport->show();
+}
+
+void MainWindow::on_pbAddTicket_clicked()
+{
+    pathTicket = QFileDialog::getOpenFileName(this, "Open file", "./", tr("Images (*.png *.jpg *.xmp)"));
+}
+
+void MainWindow::on_pbViewTicket_clicked()
+{
+    QLabel* lViewTicket = new QLabel();
+    lViewTicket->resize(800, 800);
+    lViewTicket->setAlignment(Qt::AlignCenter);
+    lViewTicket->setPixmap(QPixmap(pathTicket));
+    lViewTicket->show();
+}
+
+void MainWindow::on_pbSaveCard_clicked()
+{
+    this->saveFileXml(this);
+}
+
+
+void MainWindow::saveFileXml(MainWindow* obj) {
+    QDomDocument doc("Profile");
+    QDomElement domElement = doc.createElement("Profile");
+    doc.appendChild(domElement);
+
+    QDomElement photo = doc.createElement("Photo");
+    photo.setAttribute("Path", obj->pathPhoto);
+    domElement.appendChild(photo);
+
+    QDomElement aboutMe = doc.createElement("AboutMe");
+    aboutMe.setAttribute("Text", ui->leAboutMe->text());
+    domElement.appendChild(aboutMe);
+
+    QDomElement notes = doc.createElement("Notes");
+    notes.setAttribute("Text", ui->leNotes->text());
+    domElement.appendChild(notes);
+
+    QDomElement myReferences = doc.createElement("References");
+    myReferences.setAttribute("Text", ui->leReferences->text());
+    domElement.appendChild(myReferences);
+
+    QDomElement passport = doc.createElement("Passport");
+    passport.setAttribute("Path", obj->pathPassport);
+    domElement.appendChild(passport);
+
+    QDomElement ticket = doc.createElement("Ticket");
+    ticket.setAttribute("Path", obj->pathTicket);
+    domElement.appendChild(ticket);
+
+    QString path = QFileDialog::getSaveFileName(this, tr("Save file"), "./", tr("Xml (*.xml)"));
+    QFile file(path);
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "failed to open file for writing";
+
+    }else {
+        QTextStream stream(&file);
+        stream << doc.toString();
+        file.close();
+        qDebug() << "File save";
+    }
+}
+
+
+void MainWindow::on_pbLoadCard_clicked()
+{
+    QDomComment document;
+    QString path = QFileDialog::getOpenFileName(this, tr("Open file"), "./", tr("Xml (*.xml)"));
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "failed to open file for reading";
+    }else{
+    QByteArray buff = file.readAll();
+    QXmlStreamReader xmlDoc(buff);
+
+    while(!xmlDoc.atEnd() && !xmlDoc.hasError()) {
+        QXmlStreamReader::TokenType token = xmlDoc.readNext();
+        if(token == QXmlStreamReader::StartElement) {
+            if(xmlDoc.name() == "Photo") {
+                QXmlStreamAttributes attrb = xmlDoc.attributes();
+                ui->profileLogo->setPixmap(QPixmap(attrb.value("Path").toString()));
+                //qDebug() << attrb.value("Path").toString();
+            }
+
+            if(xmlDoc.name() == "AboutMe") {
+                QXmlStreamAttributes attrb = xmlDoc.attributes();
+                ui->leAboutMe->setText(attrb.value("Text").toString());
+                //qDebug() << attrb.value("Text").toString();
+            }
+
+            if(xmlDoc.name() == "Notes") {
+                QXmlStreamAttributes attrb = xmlDoc.attributes();
+                ui->leNotes->setText(attrb.value("Text").toString());
+                //qDebug() << attrb.value("Text").toString();
+            }
+
+            if(xmlDoc.name() == "References") {
+                QXmlStreamAttributes attrb = xmlDoc.attributes();
+                ui->leReferences->setText(attrb.value("Text").toString());
+                //qDebug() << attrb.value("Text").toString();
+            }
+
+            if(xmlDoc.name() == "Passport") {
+                QXmlStreamAttributes attrb = xmlDoc.attributes();
+                pathPassport = attrb.value("Path").toString();
+                //qDebug() << attrb.value("Path").toString();
+            }
+
+            if(xmlDoc.name() == "Ticket") {
+                QXmlStreamAttributes attrb = xmlDoc.attributes();
+                pathTicket = attrb.value("Path").toString();
+                //qDebug() << attrb.value("Path").toString();
+            }
+        }
+    }
+    }
+
 }

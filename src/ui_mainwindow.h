@@ -78,6 +78,9 @@ public:
     QVBoxLayout *verticalLayout_3;
     QLabel *profileLogo;
     QPushButton *pbAddPhoto;
+    QPushButton *pbSaveCard;
+    QLabel *lCardTreveler;
+    QPushButton *pbLoadCard;
     QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout;
     QPushButton *buttonTrips;
@@ -258,6 +261,7 @@ public:
 "border-style: solid;\n"
 " border-width: 3px; \n"
 "border-color: rgb(7, 142, 128);"));
+        leNotes->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         lNotes = new QLabel(page_4);
         lNotes->setObjectName(QStringLiteral("lNotes"));
         lNotes->setGeometry(QRect(170, 130, 81, 21));
@@ -290,9 +294,10 @@ public:
 "border-style: solid;\n"
 " border-width: 3px; \n"
 "border-color: rgb(7, 142, 128);"));
+        leReferences->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         groupBox_2 = new QGroupBox(page_4);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(0, 230, 311, 111));
+        groupBox_2->setGeometry(QRect(0, 270, 311, 131));
         gridLayout = new QGridLayout(groupBox_2);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -349,6 +354,24 @@ public:
 
         verticalLayout_3->addWidget(pbAddPhoto);
 
+        pbSaveCard = new QPushButton(page_4);
+        pbSaveCard->setObjectName(QStringLiteral("pbSaveCard"));
+        pbSaveCard->setGeometry(QRect(690, 420, 121, 41));
+        pbSaveCard->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+        lCardTreveler = new QLabel(page_4);
+        lCardTreveler->setObjectName(QStringLiteral("lCardTreveler"));
+        lCardTreveler->setGeometry(QRect(690, 360, 271, 41));
+        lCardTreveler->setFont(font2);
+        lCardTreveler->setStyleSheet(QLatin1String("border-style: solid;\n"
+" border-width: 3px; \n"
+"border-color: rgb(7, 142, 128);"));
+        lCardTreveler->setAlignment(Qt::AlignCenter);
+        pbLoadCard = new QPushButton(page_4);
+        pbLoadCard->setObjectName(QStringLiteral("pbLoadCard"));
+        pbLoadCard->setGeometry(QRect(840, 420, 121, 41));
+        pbLoadCard->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
         stackedWidget->addWidget(page_4);
         layoutWidget2 = new QWidget(centralWidget);
         layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
@@ -436,6 +459,9 @@ public:
         pbViewTicket->setText(QApplication::translate("MainWindow", "\320\237\320\276\321\201\320\274\320\276\321\202\321\200\320\265\321\202\321\214", nullptr));
         profileLogo->setText(QString());
         pbAddPhoto->setText(QApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\204\320\276\321\202\320\276", nullptr));
+        pbSaveCard->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214 ", nullptr));
+        lCardTreveler->setText(QApplication::translate("MainWindow", " \320\232\320\260\321\200\321\202\320\276\321\207\320\272\320\260 \320\277\321\203\321\202\320\265\321\210\320\265\321\201\321\202\320\262\320\265\320\275\320\275\320\270\320\272\320\260 ", nullptr));
+        pbLoadCard->setText(QApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214", nullptr));
         buttonTrips->setText(QApplication::translate("MainWindow", "\320\237\320\276\320\265\320\267\320\264\320\272\320\270", nullptr));
         buttonListOfThings->setText(QApplication::translate("MainWindow", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\262\320\265\321\211\320\265\320\271", nullptr));
         buttonTravelerCard->setText(QApplication::translate("MainWindow", "\320\232\320\260\321\200\321\202\320\276\321\207\320\272\320\260 \320\277\321\203\321\202\320\265\321\210\320\265\321\201\321\202\320\262\320\265\320\275\320\275\320\270\320\272\320\260", nullptr));

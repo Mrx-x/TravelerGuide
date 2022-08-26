@@ -14,6 +14,11 @@
 #include <QStringList>
 #include <QFileDialog>
 #include <QSize>
+#include <QFile>
+#include <QtXml>
+#include <QtCore>
+#include <QXmlStreamReader>
+#include <QByteArray>
 
 namespace Ui {
 class MainWindow;
@@ -54,13 +59,28 @@ private slots:
 
     void on_pbAddPassport_clicked();
 
+    void on_pbAddTicket_clicked();
+
+    void on_pbViewTicket_clicked();
+
+    //--SaveXmlFile
+    void saveFileXml(MainWindow* obj);
+
+    void on_pbSaveCard_clicked();
+
+    void on_pbLoadCard_clicked();
+
 private:
     Ui::MainWindow *ui;
     //MyDatabase myDatabase;
     QSqlTableModel* model;
 
     int row; //Номер выделенной строки
+
+public:
     QString pathPassport;
+    QString pathPhoto;
+    QString pathTicket;
 };
 
 #endif // MAINWINDOW_H
