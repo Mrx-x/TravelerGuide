@@ -17,4 +17,6 @@ public:
     //void request_to_create_minimal_records(QSqlDatabase& db);
 };
 
+
+
 #endif // DATABASE_H

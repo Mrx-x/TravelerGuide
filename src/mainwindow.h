@@ -19,6 +19,8 @@
 #include <QtCore>
 #include <QXmlStreamReader>
 #include <QByteArray>
+#include <database/photobase.h>
+#include <choosepath.h>
 
 namespace Ui {
 class MainWindow;
@@ -70,8 +72,21 @@ private slots:
 
     void on_pbLoadCard_clicked();
 
+    void on_ButtonTripPlan_clicked();
+
+    void on_ButtonLoadingTripPhoto_clicked();
+
+    void on_ButtonViewTripPhoto_clicked();
+
+    void on_ButtonNewPlanTrips_clicked();
+
+    void on_ButtonSavePlanTrips_clicked();
+
+    void on_ButtonLoadPlanTrips_clicked();
+
 private:
     Ui::MainWindow *ui;
+    ChoosePath* formChoosePath;
     //MyDatabase myDatabase;
     QSqlTableModel* model;
 
@@ -81,6 +96,12 @@ public:
     QString pathPassport;
     QString pathPhoto;
     QString pathTicket;
+    QString PhotoTripPath;
+    QString PhotoTripName;
+    QString pathPhotoDB;
+
+public slots:
+    void getPath(QString path);
 };
 
 #endif // MAINWINDOW_H

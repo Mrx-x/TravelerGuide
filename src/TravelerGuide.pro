@@ -26,11 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    database/database.cpp
+    database/database.cpp \
+    database/photobase.cpp \
+    choosepath.cpp
 
 HEADERS += \
         mainwindow.h \
-    database/database.h
+    database/database.h \
+    database/photobase.h \
+    choosepath.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    choosepath.ui

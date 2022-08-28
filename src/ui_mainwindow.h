@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
@@ -27,6 +28,7 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -81,11 +83,28 @@ public:
     QPushButton *pbSaveCard;
     QLabel *lCardTreveler;
     QPushButton *pbLoadCard;
+    QWidget *page_5;
+    QFrame *frame;
+    QTableWidget *tableWidget;
+    QFrame *frame_2;
     QWidget *layoutWidget2;
+    QVBoxLayout *verticalLayout_4;
+    QPushButton *ButtonLoadingTripPhoto;
+    QPushButton *ButtonViewTripPhoto;
+    QLineEdit *lePlanTrips;
+    QLabel *lPlanTrip;
+    QPushButton *ButtonSavePlanTrips;
+    QWidget *page_6;
+    QLabel *lLogoChoosePlanTrip;
+    QLabel *lChoosePlanTrip;
+    QPushButton *ButtonNewPlanTrips;
+    QPushButton *ButtonLoadPlanTrips;
+    QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout;
     QPushButton *buttonTrips;
     QPushButton *buttonListOfThings;
     QPushButton *buttonTravelerCard;
+    QPushButton *ButtonTripPlan;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -94,7 +113,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1043, 629);
+        MainWindow->resize(1043, 640);
         MainWindow->setAutoFillBackground(false);
         MainWindow->setStyleSheet(QStringLiteral("background-color: rgb(17, 41, 45);"));
         centralWidget = new QWidget(MainWindow);
@@ -373,16 +392,137 @@ public:
         pbLoadCard->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
 "background-color: rgb(7, 142, 128);"));
         stackedWidget->addWidget(page_4);
-        layoutWidget2 = new QWidget(centralWidget);
+        page_5 = new QWidget();
+        page_5->setObjectName(QStringLiteral("page_5"));
+        frame = new QFrame(page_5);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setGeometry(QRect(600, 20, 361, 365));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        tableWidget = new QTableWidget(frame);
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        tableWidget->setGeometry(QRect(10, 10, 341, 341));
+        tableWidget->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
+        frame_2 = new QFrame(page_5);
+        frame_2->setObjectName(QStringLiteral("frame_2"));
+        frame_2->setGeometry(QRect(600, 389, 361, 92));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+        layoutWidget2 = new QWidget(frame_2);
         layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        layoutWidget2->setGeometry(QRect(41, 11, 981, 51));
-        horizontalLayout = new QHBoxLayout(layoutWidget2);
+        layoutWidget2->setGeometry(QRect(20, 10, 331, 77));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget2);
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        ButtonLoadingTripPhoto = new QPushButton(layoutWidget2);
+        ButtonLoadingTripPhoto->setObjectName(QStringLiteral("ButtonLoadingTripPhoto"));
+        ButtonLoadingTripPhoto->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+
+        verticalLayout_4->addWidget(ButtonLoadingTripPhoto);
+
+        ButtonViewTripPhoto = new QPushButton(layoutWidget2);
+        ButtonViewTripPhoto->setObjectName(QStringLiteral("ButtonViewTripPhoto"));
+        ButtonViewTripPhoto->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+
+        verticalLayout_4->addWidget(ButtonViewTripPhoto);
+
+        lePlanTrips = new QLineEdit(page_5);
+        lePlanTrips->setObjectName(QStringLiteral("lePlanTrips"));
+        lePlanTrips->setGeometry(QRect(10, 50, 551, 391));
+        QFont font3;
+        font3.setFamily(QStringLiteral("Consolas"));
+        font3.setPointSize(11);
+        lePlanTrips->setFont(font3);
+        lePlanTrips->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+        lePlanTrips->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        lPlanTrip = new QLabel(page_5);
+        lPlanTrip->setObjectName(QStringLiteral("lPlanTrip"));
+        lPlanTrip->setGeometry(QRect(20, 20, 171, 31));
+        QFont font4;
+        font4.setFamily(QStringLiteral("Times New Roman"));
+        font4.setPointSize(13);
+        font4.setBold(true);
+        font4.setWeight(75);
+        lPlanTrip->setFont(font4);
+        lPlanTrip->setStyleSheet(QLatin1String("color: white;\n"
+"border-style: solid;\n"
+" border-width: 1px; \n"
+"border-color: rgb(7, 142, 128);"));
+        ButtonSavePlanTrips = new QPushButton(page_5);
+        ButtonSavePlanTrips->setObjectName(QStringLiteral("ButtonSavePlanTrips"));
+        ButtonSavePlanTrips->setGeometry(QRect(150, 450, 281, 31));
+        QFont font5;
+        font5.setFamily(QStringLiteral("Times New Roman"));
+        font5.setPointSize(13);
+        ButtonSavePlanTrips->setFont(font5);
+        ButtonSavePlanTrips->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"border-style: outset;\n"
+" border-width: 5px; \n"
+"border-color: rgb(112, 255, 227);"));
+        stackedWidget->addWidget(page_5);
+        page_6 = new QWidget();
+        page_6->setObjectName(QStringLiteral("page_6"));
+        lLogoChoosePlanTrip = new QLabel(page_6);
+        lLogoChoosePlanTrip->setObjectName(QStringLiteral("lLogoChoosePlanTrip"));
+        lLogoChoosePlanTrip->setGeometry(QRect(220, 120, 141, 131));
+        lLogoChoosePlanTrip->setTextFormat(Qt::PlainText);
+        lLogoChoosePlanTrip->setPixmap(QPixmap(QString::fromUtf8("../choice.png")));
+        lLogoChoosePlanTrip->setScaledContents(false);
+        lLogoChoosePlanTrip->setAlignment(Qt::AlignCenter);
+        lLogoChoosePlanTrip->setWordWrap(false);
+        lChoosePlanTrip = new QLabel(page_6);
+        lChoosePlanTrip->setObjectName(QStringLiteral("lChoosePlanTrip"));
+        lChoosePlanTrip->setGeometry(QRect(370, 140, 271, 81));
+        QFont font6;
+        font6.setFamily(QStringLiteral("Times New Roman"));
+        font6.setPointSize(17);
+        font6.setBold(false);
+        font6.setUnderline(false);
+        font6.setWeight(50);
+        lChoosePlanTrip->setFont(font6);
+        lChoosePlanTrip->setStyleSheet(QLatin1String("\n"
+"color: rgb(255, 255, 255);\n"
+"\n"
+"border-style: outset;\n"
+" border-width: 5px; \n"
+"border-color: rgb(42, 66, 140);"));
+        lChoosePlanTrip->setAlignment(Qt::AlignCenter);
+        ButtonNewPlanTrips = new QPushButton(page_6);
+        ButtonNewPlanTrips->setObjectName(QStringLiteral("ButtonNewPlanTrips"));
+        ButtonNewPlanTrips->setGeometry(QRect(260, 290, 211, 91));
+        QFont font7;
+        font7.setFamily(QStringLiteral("Times New Roman"));
+        font7.setPointSize(15);
+        ButtonNewPlanTrips->setFont(font7);
+        ButtonNewPlanTrips->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(60, 88, 160);\n"
+"border-style: groove;\n"
+" border-width: 5px; \n"
+"border-color: rgb(42, 66, 140);"));
+        ButtonLoadPlanTrips = new QPushButton(page_6);
+        ButtonLoadPlanTrips->setObjectName(QStringLiteral("ButtonLoadPlanTrips"));
+        ButtonLoadPlanTrips->setGeometry(QRect(520, 290, 211, 91));
+        ButtonLoadPlanTrips->setFont(font7);
+        ButtonLoadPlanTrips->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(60, 88, 160);\n"
+"border-style: groove;\n"
+" border-width: 5px; \n"
+"border-color: rgb(42, 66, 140);"));
+        stackedWidget->addWidget(page_6);
+        layoutWidget3 = new QWidget(centralWidget);
+        layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(41, 11, 981, 51));
+        horizontalLayout = new QHBoxLayout(layoutWidget3);
         horizontalLayout->setSpacing(10);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         horizontalLayout->setContentsMargins(5, 0, 5, 0);
-        buttonTrips = new QPushButton(layoutWidget2);
+        buttonTrips = new QPushButton(layoutWidget3);
         buttonTrips->setObjectName(QStringLiteral("buttonTrips"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
@@ -394,7 +534,7 @@ public:
 
         horizontalLayout->addWidget(buttonTrips);
 
-        buttonListOfThings = new QPushButton(layoutWidget2);
+        buttonListOfThings = new QPushButton(layoutWidget3);
         buttonListOfThings->setObjectName(QStringLiteral("buttonListOfThings"));
         sizePolicy1.setHeightForWidth(buttonListOfThings->sizePolicy().hasHeightForWidth());
         buttonListOfThings->setSizePolicy(sizePolicy1);
@@ -403,7 +543,7 @@ public:
 
         horizontalLayout->addWidget(buttonListOfThings);
 
-        buttonTravelerCard = new QPushButton(layoutWidget2);
+        buttonTravelerCard = new QPushButton(layoutWidget3);
         buttonTravelerCard->setObjectName(QStringLiteral("buttonTravelerCard"));
         sizePolicy1.setHeightForWidth(buttonTravelerCard->sizePolicy().hasHeightForWidth());
         buttonTravelerCard->setSizePolicy(sizePolicy1);
@@ -412,6 +552,15 @@ public:
 "background-color: rgb(7, 142, 128);"));
 
         horizontalLayout->addWidget(buttonTravelerCard);
+
+        ButtonTripPlan = new QPushButton(layoutWidget3);
+        ButtonTripPlan->setObjectName(QStringLiteral("ButtonTripPlan"));
+        sizePolicy1.setHeightForWidth(ButtonTripPlan->sizePolicy().hasHeightForWidth());
+        ButtonTripPlan->setSizePolicy(sizePolicy1);
+        ButtonTripPlan->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
+"background-color: rgb(7, 142, 128);"));
+
+        horizontalLayout->addWidget(ButtonTripPlan);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -428,7 +577,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -462,9 +611,18 @@ public:
         pbSaveCard->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214 ", nullptr));
         lCardTreveler->setText(QApplication::translate("MainWindow", " \320\232\320\260\321\200\321\202\320\276\321\207\320\272\320\260 \320\277\321\203\321\202\320\265\321\210\320\265\321\201\321\202\320\262\320\265\320\275\320\275\320\270\320\272\320\260 ", nullptr));
         pbLoadCard->setText(QApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214", nullptr));
+        ButtonLoadingTripPhoto->setText(QApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214 \321\204\320\276\321\202\320\276", nullptr));
+        ButtonViewTripPhoto->setText(QApplication::translate("MainWindow", "\320\237\320\276\320\272\320\260\320\267\320\260\321\202\321\214 \320\262\321\201\320\265 \321\204\320\276\321\202\320\276", nullptr));
+        lPlanTrip->setText(QApplication::translate("MainWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\277\320\273\320\260\320\275 \320\277\320\276\320\265\320\267\320\264\320\272\320\270", nullptr));
+        ButtonSavePlanTrips->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
+        lLogoChoosePlanTrip->setText(QString());
+        lChoosePlanTrip->setText(QApplication::translate("MainWindow", "\320\222\321\213\320\261\320\265\321\200\320\270\321\202\320\265 \320\264\320\265\320\271\321\201\321\202\320\262\320\270\320\265", nullptr));
+        ButtonNewPlanTrips->setText(QApplication::translate("MainWindow", "\320\235\320\276\320\262\321\213\320\271 \"\320\277\320\273\320\260\320\275\"", nullptr));
+        ButtonLoadPlanTrips->setText(QApplication::translate("MainWindow", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214", nullptr));
         buttonTrips->setText(QApplication::translate("MainWindow", "\320\237\320\276\320\265\320\267\320\264\320\272\320\270", nullptr));
         buttonListOfThings->setText(QApplication::translate("MainWindow", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\262\320\265\321\211\320\265\320\271", nullptr));
         buttonTravelerCard->setText(QApplication::translate("MainWindow", "\320\232\320\260\321\200\321\202\320\276\321\207\320\272\320\260 \320\277\321\203\321\202\320\265\321\210\320\265\321\201\321\202\320\262\320\265\320\275\320\275\320\270\320\272\320\260", nullptr));
+        ButtonTripPlan->setText(QApplication::translate("MainWindow", "\320\237\320\273\320\260\320\275 \320\277\320\276\320\265\320\267\320\264\320\272\320\270", nullptr));
     } // retranslateUi
 
 };

@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+    ui->tableWidget->setFocusPolicy(Qt::NoFocus);
+
+    formChoosePath = new ChoosePath; //форма выбора пути БД
+    connect(formChoosePath, &ChoosePath::transferPath, this, &MainWindow::getPath);
 
     MyDatabase* myDatabase = new MyDatabase();
     myDatabase->connection();
@@ -18,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     model->select();
     ui->tableView->setModel(model);
+
+    //Создание бд для фото
+    //createConnetion();
+    //createTables();
 
     //Create treeWidget
     QTreeWidget* pTreeWidget = ui->treeWidget;
@@ -90,6 +98,11 @@ void MainWindow::on_buttonListOfThings_clicked()
 void MainWindow::on_buttonTravelerCard_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_ButtonTripPlan_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
 }
 //---
 
@@ -280,4 +293,139 @@ void MainWindow::on_pbLoadCard_clicked()
     }
     }
 
+}
+//---План поездки
+//Сохранить изображение в БД
+void MainWindow::on_ButtonLoadingTripPhoto_clicked()
+{
+    PhotoTripPath = QFileDialog::getOpenFileName(0, "Изображения (*.jpg *.png *.bmp *.jpeg)");
+
+    if(PhotoTripPath.isEmpty()) {
+        return;
+    }
+    //QMessageBox::information(0, tr("Изображение"), tr("Изображение открыто"));
+    QPixmap pix(PhotoTripPath);
+    qDebug() << PhotoTripPath;
+    PhotoTripName = QFileInfo(PhotoTripPath).baseName();
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO img (filename, imagepath) VALUES (:fileName, :imagePath)");
+    query.bindValue(":fileName", PhotoTripName);
+    query.bindValue(":imagePath", PhotoTripPath);
+
+    if(!query.exec()) {
+        qDebug() << "Error inserting image into table" << query.lastError();
+    }
+}
+
+//Считать БД
+void MainWindow::on_ButtonViewTripPhoto_clicked()
+{
+    ui->tableWidget->setColumnCount(3);
+    QStringList headerName;
+    headerName << "id" << "имя файла" << "миниатюра";
+    ui->tableWidget->setHorizontalHeaderLabels(headerName);
+
+    QSqlQuery query;
+    QString strQuery("SELECT * FROM img");
+    query.exec(strQuery);
+
+    int rowCount = 0;
+
+    while(query.next()) {
+        ui->tableWidget->insertRow(rowCount);
+
+        QTableWidgetItem* id = new QTableWidgetItem;
+        QTableWidgetItem* fileName = new QTableWidgetItem;
+        QTableWidgetItem* imagePath = new QTableWidgetItem;
+
+        id->setText(query.value(0).toString());
+        fileName->setText(query.value(1).toString());
+
+        QString img_path = query.value(2).toString();
+        imagePath->setData(Qt::DecorationRole, QPixmap(img_path).scaled(150, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        imagePath->setText(query.value(2).toString());
+        ui->tableWidget->setItem(rowCount, 0, id);
+        ui->tableWidget->setItem(rowCount, 1, fileName);
+        ui->tableWidget->setItem(rowCount, 2, imagePath);
+
+        fileName->setTextAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+        ui->tableWidget->setRowHeight(rowCount, 100);
+        ui->tableWidget->setColumnWidth(1, 150);
+        ui->tableWidget->setColumnWidth(2, 150);
+
+        rowCount++;
+    }
+    ui->tableWidget->setColumnHidden(0, true); //Скрыл столбец id
+}
+//---Выбор плана поездки Загрузить/Создать
+void MainWindow::on_ButtonNewPlanTrips_clicked()
+{
+    formChoosePath->show();
+}
+
+void MainWindow::on_ButtonSavePlanTrips_clicked()
+{
+    QDomDocument doc("PlanTrips");
+    QDomElement domElement = doc.createElement("Plan");
+    doc.appendChild(domElement);
+
+    QDomElement record = doc.createElement("Record");
+    record.setAttribute("Text", ui->lePlanTrips->text());
+    domElement.appendChild(record);
+
+    QDomElement pathPhoto = doc.createElement("pathDB");
+    pathPhoto.setAttribute("Path", pathPhotoDB);
+    domElement.appendChild(pathPhoto);
+
+    QString path = QFileDialog::getSaveFileName(this, tr("Save file"), "./", tr("Xml (*.xml)"));
+    QFile file(path);
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "failed to open file for writing";
+
+    }else {
+        QTextStream stream(&file);
+        stream << doc.toString();
+        file.close();
+        qDebug() << "File save";
+    }
+}
+
+void MainWindow::getPath(QString path)
+{
+    pathPhotoDB = path;
+    ui->stackedWidget->setCurrentIndex(4);
+    createConnetion(pathPhotoDB);
+    createTables();
+}
+
+void MainWindow::on_ButtonLoadPlanTrips_clicked()
+{
+    QDomComment document;
+    QString path = QFileDialog::getOpenFileName(this, tr("Open file"), "./", tr("Xml (*.xml)"));
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "failed to open file for reading";
+    }else{
+
+    QByteArray buff = file.readAll();
+    QXmlStreamReader xmlDoc(buff);
+
+    while(!xmlDoc.atEnd() && !xmlDoc.hasError()) {
+            QXmlStreamReader::TokenType token = xmlDoc.readNext();
+            if(token == QXmlStreamReader::StartElement) {
+                if(xmlDoc.name() == "Record") {
+                    QXmlStreamAttributes attrb = xmlDoc.attributes();
+                    ui->lePlanTrips->setText(attrb.value("Text").toString());
+                }
+                if(xmlDoc.name() == "pathDB") {
+                    QXmlStreamAttributes attrb = xmlDoc.attributes();
+                    createConnetion(attrb.value("Path").toString());
+                    createTables();
+                    MainWindow::on_ButtonViewTripPhoto_clicked();
+                }
+            }
+        }
+    }
+    ui->stackedWidget->setCurrentIndex(4);
 }
